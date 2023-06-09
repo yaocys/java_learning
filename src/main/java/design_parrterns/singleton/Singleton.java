@@ -1,6 +1,7 @@
 package design_parrterns.singleton;
 
 /**
+ * 线程安全且效率最高的实现
  * @author yao 2022/10/10
  */
 public class Singleton {

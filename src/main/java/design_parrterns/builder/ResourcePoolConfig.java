@@ -1,21 +1,26 @@
+/*
 package design_parrterns.builder;
 
 import org.junit.platform.commons.util.StringUtils;
 
+*/
 /**
  * 可以把逻辑校验放到builder类中，先创建建造者，通过set方法为建造者的变量赋值
  * 然后在build方法真正创建对象之前，做集中校验，校验通过后才会创建对象
- *
+ * <p>
  * 除此之外，我们把ResourcePoolConfig的构造函数改为private私有权限，
  * 这样我们就只能通过建造者来创建ResourcePoolConfig类对象
  * 并且，ResourcePoolConfig没有提供任何set方法，这样我们创建出的对象就是不可变对象
+ *
  * @author yao 2022/11/11
- */
+ *//*
+
 public class ResourcePoolConfig {
     private String name;
     private int maxTotal;
     private int maxIdle;
     private int minIdle;
+
     private ResourcePoolConfig(Builder builder) {
         this.name = builder.name;
         this.maxTotal = builder.maxTotal;
@@ -33,8 +38,17 @@ public class ResourcePoolConfig {
         private int maxIdle = DEFAULT_MAX_IDLE;
         private int minIdle = DEFAULT_MIN_IDLE;
 
+        */
+/**
+         * 使用build方法来对参数地完整性，以及参数间的依赖/约束关系做校验
+         *//*
+
         public ResourcePoolConfig build() {
-            // 校验逻辑放到这里来做，包括必填项校验、依赖关系校验、约束条件校验等
+            */
+/*
+            校验逻辑放到这里来做，包括必填项校验、依赖关系校验、约束条件校验等
+             *//*
+
             if (StringUtils.isBlank(name)) {
                 throw new IllegalArgumentException("...");
             }
@@ -86,3 +100,4 @@ public class ResourcePoolConfig {
             setMinIdle(1).
             build();
 }
+*/

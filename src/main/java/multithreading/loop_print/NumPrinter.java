@@ -1,3 +1,4 @@
+/*
 package multithreading.loop_print;
 
 import org.junit.jupiter.api.Test;
@@ -6,11 +7,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+*/
 /**
  * @author yao 2022/10/6
  *
  * 每个线程打印5个连续的数字，从1打印到75
- */
+ *//*
+
 public class NumPrinter {
     private final AtomicInteger counter = new AtomicInteger(0);
 
@@ -84,3 +87,4 @@ public class NumPrinter {
         threadC.start();
     }
 }
+*/
