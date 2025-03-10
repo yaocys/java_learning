@@ -19,11 +19,9 @@ class Product {
 public class Main {
 
     public static void main(String[] args) {
-        /*Buffer buffer = new Buffer(100, 50, new ArrayDeque<>());
-
-        new Thread(new Producer(buffer)).start();
-        new Thread(new Consumer(buffer)).start();*/
-        Object object = new Object();
+        Main main = new Main();
+        int[][] pre = {{1, 0}, {2, 0}, {3, 1}, {3, 2}};
+        main.findOrder(4, pre);
     }
 
     public int numOfPath(int m, int n) {
@@ -47,5 +45,32 @@ public class Main {
             }
         }
         return dp[m - 1][n - 1];
+    }
+
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        int[] res = new int[numCourses];
+        // 记录了每个节点的入度是多少
+        int[] inDegree = new int[numCourses];
+        for (int[] pair : prerequisites) inDegree[pair[0]]++;
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) if (inDegree[i] == 0) queue.offer(i);
+
+        int index = 0;
+        while (!queue.isEmpty()) {
+            int curr = queue.poll();
+            res[index++] = curr;
+            // 更新入度以及队列
+            for (int[] pair : prerequisites) {
+                int to = pair[0];
+                int from = pair[1];
+                if (curr == from) {
+                    inDegree[to]--;
+                    if (inDegree[to] == 0) queue.offer(to);
+                }
+            }
+        }
+        if (index == numCourses) return res;
+        else return new int[0];
     }
 }
